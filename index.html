@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Lumi-Pop TV" />
+  <meta name="description" content="Lumi-Pop Guardians & K-Pop: Demon Hunters Kids 3D Animated Video Theater for iPad" />
+  <title>Lumi-Pop Guardians & K-Pop: Demon Hunters — Kids 3D Animation Theater</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="sparkle-layer"></div>
+
+  <header class="top-header" id="header-bar">
+    <div class="brand-group" onclick="triggerMagicTattooPower()" id="brand-logo-btn">
+      <div class="brand-badge" title="Tap for Star Magic!">🌟</div>
+      <div class="brand-title">
+        <h1>Lumi-Pop &amp; Demon Hunters TV</h1>
+        <div class="brand-subtitle">3D Animated K-Pop Sing-Along Theater ✨</div>
+      </div>
+    </div>
+
+    <nav class="channel-tabs" aria-label="Video Channels">
+      <button id="tab-all" class="tab-btn active-lumipop" onclick="switchChannel('all')">
+        <span>🌈</span> <span>All Videos (14)</span>
+      </button>
+      <button id="tab-lumipop" class="tab-btn" onclick="switchChannel('lumipop')">
+        <span>🐾</span> <span>Lumi-Pop 3D (4)</span>
+      </button>
+      <button id="tab-dh" class="tab-btn" onclick="switchChannel('demonhunters')">
+        <span>🎤</span> <span>Demon Hunters (10)</span>
+      </button>
+      <button id="tab-stickers" class="tab-btn" onclick="switchChannel('stickers')">
+        <span>✨</span> <span>Sticker &amp; Tattoo Book</span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="theater-container">
+    <div id="theater-main-grid" style="display: contents;">
+      <!-- Big Stage Player Column -->
+      <section class="stage-card" aria-label="Main Video Stage">
+        <div class="video-frame-wrapper">
+          <video
+            id="main-video"
+            playsinline
+            webkit-playsinline
+            controls
+            preload="metadata"
+            poster="assets/thumbs/lumipop_mv_full.jpg"
+          ></video>
+        </div>
+
+        <div class="now-playing-banner">
+          <div class="now-playing-info">
+            <span class="now-playing-tag" id="now-playing-tag">🌟 Lumi-Pop Guardians 3D</span>
+            <h2 class="now-playing-title kid-title" id="now-playing-title">
+              Golden Soda Star! (Full 3D Animated Music Video)
+            </h2>
+          </div>
+        </div>
+
+        <!-- Giant Tactile iPad Touch Controls -->
+        <div class="kid-controls-row">
+          <button id="btn-prev" class="kid-ctrl-btn" onclick="playPrevVideo()">
+            <span class="ctrl-emoji">⏮️</span>
+            <span class="ctrl-label">Back</span>
+          </button>
+
+          <button id="btn-play" class="kid-ctrl-btn primary-play" onclick="togglePlayPause()">
+            <span class="ctrl-emoji" id="play-btn-emoji">▶️</span>
+            <span class="ctrl-label" id="play-btn-label">Play!</span>
+          </button>
+
+          <button id="btn-next" class="kid-ctrl-btn" onclick="playNextVideo()">
+            <span class="ctrl-emoji">⏭️</span>
+            <span class="ctrl-label">Next Song</span>
+          </button>
+
+          <button id="btn-loop" class="kid-ctrl-btn loop-active" onclick="toggleLoopMode()">
+            <span class="ctrl-emoji">🔁</span>
+            <span class="ctrl-label">Repeat: ON</span>
+          </button>
+
+          <button id="btn-tattoo" class="kid-ctrl-btn tattoo-magic" onclick="triggerMagicTattooPower()">
+            <span class="ctrl-emoji">✨</span>
+            <span class="ctrl-label">Star Sticker!</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Playlist Column -->
+      <section class="playlist-panel" aria-label="Episode Playlist">
+        <div class="playlist-header">
+          <h2>🎬 Tap Any Song to Watch!</h2>
+          <button id="btn-fullscreen" class="tab-btn" onclick="enteriPadFullscreen()" style="padding: 8px 16px; font-size: 0.98rem;">
+            📺 Full Screen
+          </button>
+        </div>
+
+        <div id="video-cards-grid" class="video-cards-grid"></div>
+      </section>
+    </div>
+
+    <!-- Interactive Character & Printable Temporary Tattoo Sticker Book -->
+    <section id="sticker-book-section" class="sticker-book-section" aria-label="Character and Sticker Book">
+      <div class="playlist-header">
+        <h2>✨ Tap any card to hear Rumi-Bop &amp; see the Star-Paw Crests!</h2>
+      </div>
+      <div class="sticker-grid">
+        <div class="sticker-card" onclick="triggerMagicTattooPower()">
+          <img src="assets/tattoo_sheet.jpg" alt="Lumi-Pop Guardians Temporary Tattoo Crest Sheet" />
+          <h3>1. Magical Wrist Temporary Tattoo Stickers</h3>
+          <p>Tap Rumi-Bop's glowing cyan-and-gold Star-Shield wrist sticker to summon golden star power!</p>
+        </div>
+
+        <div class="sticker-card" onclick="triggerMagicTattooPower()">
+          <img src="assets/character_sheet.jpg" alt="Rumi-Bop, Mira-Mel, and Zoey-Zing 3D Character Sheet" />
+          <h3>2. Meet Rumi-Bop, Mira-Mel &amp; Zoey-Zing</h3>
+          <p>The 6-year-old Star-Paw Trio who sing 124 BPM K-Pop songs with their glowing golden microphones!</p>
+        </div>
+
+        <div class="sticker-card" onclick="triggerMagicTattooPower()">
+          <img src="assets/concert_stage.jpg" alt="Golden Sky-Dome Concert Stage and Grumble-Bunnies" />
+          <h3>3. Golden Sky-Dome &amp; Grumble-Bunnies</h3>
+          <p>When the music plays, sleepy purple Grumble-Bunnies pop into rainbow soda-pop bubbles!</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
